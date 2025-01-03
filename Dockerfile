@@ -8,8 +8,8 @@ RUN bun install
 
 COPY . .
 
-RUN bun run build
+RUN bun run build && ls
 
 USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "run", "index.ts" ]
+ENTRYPOINT [ "bun", "run", "start" ]
