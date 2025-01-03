@@ -6,10 +6,13 @@ COPY package*.json ./
 ENV NODE_ENV=production
 RUN bun install
 
+RUN addgroup --system --gid 1001 bun
+RUN adduser --system --uid 1001 bun
+
 COPY . .
 
 RUN bun run build && ls
 
 USER bun
 EXPOSE 3000/tcp
-ENTRYPOINT [ "bun", "run", "start" ]
+ENTRYPOINT [ "bun", "run", "serve" ]
