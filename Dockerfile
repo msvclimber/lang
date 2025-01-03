@@ -9,6 +9,6 @@ COPY . .
 
 RUN bun run build
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD [ "bun", "run", "serve" ]
