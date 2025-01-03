@@ -12,4 +12,4 @@ RUN bun run build
 
 USER bun
 EXPOSE 3000/tcp
-CMD [ "bun", "run", "start" ]
+ENTRYPOINT [ "bun", "run", "index.ts" ]
