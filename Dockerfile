@@ -6,7 +6,6 @@ COPY package*.json ./
 ENV NODE_ENV=production
 RUN bun install
 
-RUN addgroup --system --gid 1001 bun
 RUN adduser --system --uid 1001 bun
 
 COPY . .
