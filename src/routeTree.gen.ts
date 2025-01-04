@@ -13,11 +13,14 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as UsersUsernameImport } from './routes/users/$username'
 
 // Create Virtual Routes
 
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
+const WordsIndexLazyImport = createFileRoute('/words/')()
+const UsersIndexLazyImport = createFileRoute('/users/')()
 
 // Create/Update Routes
 
@@ -32,6 +35,24 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const WordsIndexLazyRoute = WordsIndexLazyImport.update({
+  id: '/words/',
+  path: '/words/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/words/index.lazy').then((d) => d.Route))
+
+const UsersIndexLazyRoute = UsersIndexLazyImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/users/index.lazy').then((d) => d.Route))
+
+const UsersUsernameRoute = UsersUsernameImport.update({
+  id: '/users/$username',
+  path: '/users/$username',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -51,6 +72,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
+    '/users/$username': {
+      id: '/users/$username'
+      path: '/users/$username'
+      fullPath: '/users/$username'
+      preLoaderRoute: typeof UsersUsernameImport
+      parentRoute: typeof rootRoute
+    }
+    '/users/': {
+      id: '/users/'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof UsersIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/words/': {
+      id: '/words/'
+      path: '/words'
+      fullPath: '/words'
+      preLoaderRoute: typeof WordsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -59,36 +101,51 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/users/$username': typeof UsersUsernameRoute
+  '/users': typeof UsersIndexLazyRoute
+  '/words': typeof WordsIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/users/$username': typeof UsersUsernameRoute
+  '/users': typeof UsersIndexLazyRoute
+  '/words': typeof WordsIndexLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/users/$username': typeof UsersUsernameRoute
+  '/users/': typeof UsersIndexLazyRoute
+  '/words/': typeof WordsIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/about' | '/users/$username' | '/users' | '/words'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/users/$username' | '/users' | '/words'
+  id: '__root__' | '/' | '/about' | '/users/$username' | '/users/' | '/words/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AboutLazyRoute: typeof AboutLazyRoute
+  UsersUsernameRoute: typeof UsersUsernameRoute
+  UsersIndexLazyRoute: typeof UsersIndexLazyRoute
+  WordsIndexLazyRoute: typeof WordsIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AboutLazyRoute: AboutLazyRoute,
+  UsersUsernameRoute: UsersUsernameRoute,
+  UsersIndexLazyRoute: UsersIndexLazyRoute,
+  WordsIndexLazyRoute: WordsIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -102,7 +159,10 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/about",
+        "/users/$username",
+        "/users/",
+        "/words/"
       ]
     },
     "/": {
@@ -110,6 +170,15 @@ export const routeTree = rootRoute
     },
     "/about": {
       "filePath": "about.lazy.tsx"
+    },
+    "/users/$username": {
+      "filePath": "users/$username.tsx"
+    },
+    "/users/": {
+      "filePath": "users/index.lazy.tsx"
+    },
+    "/words/": {
+      "filePath": "words/index.lazy.tsx"
     }
   }
 }
