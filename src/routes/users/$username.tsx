@@ -13,12 +13,6 @@ async function fetchUserData(username: string): Promise<{ name: string }> {
 export const Route = createFileRoute("/users/$username")({
   component: RouteComponent,
   loader: ({ params }) => fetchUserData(params.username),
-  errorComponent: ({ error }) => (
-    <div>
-      <div>Что-то пошло не так</div>
-      <div>{error.message}</div>
-    </div>
-  ),
 });
 
 function RouteComponent() {

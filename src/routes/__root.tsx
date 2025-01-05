@@ -20,6 +20,9 @@ function RootComponent() {
         <Link to="/words" className="[&.active]:font-bold">
           Words
         </Link>
+        <Link to="/en/phrases" className="[&.active]:font-bold">
+          Фразы
+        </Link>
       </div>
       <hr />
       <Outlet />

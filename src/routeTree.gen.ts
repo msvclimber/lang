@@ -17,12 +17,22 @@ import { Route as UsersUsernameImport } from './routes/users/$username'
 
 // Create Virtual Routes
 
+const NotFoundComponentLazyImport = createFileRoute('/notFoundComponent')()
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 const WordsIndexLazyImport = createFileRoute('/words/')()
 const UsersIndexLazyImport = createFileRoute('/users/')()
+const EnPhrasesLazyImport = createFileRoute('/en/phrases')()
 
 // Create/Update Routes
+
+const NotFoundComponentLazyRoute = NotFoundComponentLazyImport.update({
+  id: '/notFoundComponent',
+  path: '/notFoundComponent',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/notFoundComponent.lazy').then((d) => d.Route),
+)
 
 const AboutLazyRoute = AboutLazyImport.update({
   id: '/about',
@@ -48,6 +58,12 @@ const UsersIndexLazyRoute = UsersIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/users/index.lazy').then((d) => d.Route))
 
+const EnPhrasesLazyRoute = EnPhrasesLazyImport.update({
+  id: '/en/phrases',
+  path: '/en/phrases',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/en/phrases.lazy').then((d) => d.Route))
+
 const UsersUsernameRoute = UsersUsernameImport.update({
   id: '/users/$username',
   path: '/users/$username',
@@ -72,11 +88,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
+    '/notFoundComponent': {
+      id: '/notFoundComponent'
+      path: '/notFoundComponent'
+      fullPath: '/notFoundComponent'
+      preLoaderRoute: typeof NotFoundComponentLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/users/$username': {
       id: '/users/$username'
       path: '/users/$username'
       fullPath: '/users/$username'
       preLoaderRoute: typeof UsersUsernameImport
+      parentRoute: typeof rootRoute
+    }
+    '/en/phrases': {
+      id: '/en/phrases'
+      path: '/en/phrases'
+      fullPath: '/en/phrases'
+      preLoaderRoute: typeof EnPhrasesLazyImport
       parentRoute: typeof rootRoute
     }
     '/users/': {
@@ -101,7 +131,9 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
+  '/en/phrases': typeof EnPhrasesLazyRoute
   '/users': typeof UsersIndexLazyRoute
   '/words': typeof WordsIndexLazyRoute
 }
@@ -109,7 +141,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
+  '/en/phrases': typeof EnPhrasesLazyRoute
   '/users': typeof UsersIndexLazyRoute
   '/words': typeof WordsIndexLazyRoute
 }
@@ -118,24 +152,50 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
+  '/en/phrases': typeof EnPhrasesLazyRoute
   '/users/': typeof UsersIndexLazyRoute
   '/words/': typeof WordsIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/users/$username' | '/users' | '/words'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/notFoundComponent'
+    | '/users/$username'
+    | '/en/phrases'
+    | '/users'
+    | '/words'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/users/$username' | '/users' | '/words'
-  id: '__root__' | '/' | '/about' | '/users/$username' | '/users/' | '/words/'
+  to:
+    | '/'
+    | '/about'
+    | '/notFoundComponent'
+    | '/users/$username'
+    | '/en/phrases'
+    | '/users'
+    | '/words'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/notFoundComponent'
+    | '/users/$username'
+    | '/en/phrases'
+    | '/users/'
+    | '/words/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AboutLazyRoute: typeof AboutLazyRoute
+  NotFoundComponentLazyRoute: typeof NotFoundComponentLazyRoute
   UsersUsernameRoute: typeof UsersUsernameRoute
+  EnPhrasesLazyRoute: typeof EnPhrasesLazyRoute
   UsersIndexLazyRoute: typeof UsersIndexLazyRoute
   WordsIndexLazyRoute: typeof WordsIndexLazyRoute
 }
@@ -143,7 +203,9 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AboutLazyRoute: AboutLazyRoute,
+  NotFoundComponentLazyRoute: NotFoundComponentLazyRoute,
   UsersUsernameRoute: UsersUsernameRoute,
+  EnPhrasesLazyRoute: EnPhrasesLazyRoute,
   UsersIndexLazyRoute: UsersIndexLazyRoute,
   WordsIndexLazyRoute: WordsIndexLazyRoute,
 }
@@ -160,7 +222,9 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/about",
+        "/notFoundComponent",
         "/users/$username",
+        "/en/phrases",
         "/users/",
         "/words/"
       ]
@@ -171,8 +235,14 @@ export const routeTree = rootRoute
     "/about": {
       "filePath": "about.lazy.tsx"
     },
+    "/notFoundComponent": {
+      "filePath": "notFoundComponent.lazy.tsx"
+    },
     "/users/$username": {
       "filePath": "users/$username.tsx"
+    },
+    "/en/phrases": {
+      "filePath": "en/phrases.lazy.tsx"
     },
     "/users/": {
       "filePath": "users/index.lazy.tsx"
