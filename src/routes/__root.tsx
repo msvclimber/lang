@@ -1,5 +1,7 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
+import styles from "./styles.module.scss";
+
 export const Route = createRootRoute({
   component: RootComponent,
 });
@@ -7,24 +9,43 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <div className="p-2 flex gap-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>{" "}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
-        </Link>
-        <Link to="/users" className="[&.active]:font-bold">
-          Users
-        </Link>
-        <Link to="/words" className="[&.active]:font-bold">
-          Words
-        </Link>
-        <Link to="/en/phrases" className="[&.active]:font-bold">
-          Фразы
-        </Link>
+      <div>
+        <div className={styles.lang}>
+          <div>
+            <Link to="/" className="[&.active]:font-bold">
+              Home
+            </Link>
+          </div>
+        </div>
+        <div className={styles.lang}>
+          <div>
+            <Link to="/about" className="[&.active]:font-bold">
+              About
+            </Link>
+          </div>
+        </div>
+        <div className={styles.lang}>
+          <div>
+            <Link to="/users" className="[&.active]:font-bold">
+              Users
+            </Link>
+          </div>
+        </div>
+        <div className={styles.lang}>
+          <div>
+            <Link to="/words" className="[&.active]:font-bold">
+              Words
+            </Link>
+          </div>
+        </div>
+        <div className={styles.lang}>
+          <div>
+            <Link to="/en/phrases" className="[&.active]:font-bold">
+              Фразы
+            </Link>
+          </div>
+        </div>
       </div>
-      <hr />
       <Outlet />
     </>
   );
