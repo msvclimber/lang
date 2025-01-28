@@ -18,10 +18,17 @@ import { Route as UsersUsernameImport } from './routes/users/$username'
 // Create Virtual Routes
 
 const NotFoundComponentLazyImport = createFileRoute('/notFoundComponent')()
-const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
-const WordsIndexLazyImport = createFileRoute('/words/')()
+const ZhIndexLazyImport = createFileRoute('/zh/')()
 const UsersIndexLazyImport = createFileRoute('/users/')()
+const UnitIndexLazyImport = createFileRoute('/unit/')()
+const PtIndexLazyImport = createFileRoute('/pt/')()
+const PronounsIndexLazyImport = createFileRoute('/pronouns/')()
+const JaIndexLazyImport = createFileRoute('/ja/')()
+const ItIndexLazyImport = createFileRoute('/it/')()
+const FrIndexLazyImport = createFileRoute('/fr/')()
+const EsIndexLazyImport = createFileRoute('/es/')()
+const EnIndexLazyImport = createFileRoute('/en/')()
 const EnPhrasesLazyImport = createFileRoute('/en/phrases')()
 
 // Create/Update Routes
@@ -34,29 +41,73 @@ const NotFoundComponentLazyRoute = NotFoundComponentLazyImport.update({
   import('./routes/notFoundComponent.lazy').then((d) => d.Route),
 )
 
-const AboutLazyRoute = AboutLazyImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
-
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const WordsIndexLazyRoute = WordsIndexLazyImport.update({
-  id: '/words/',
-  path: '/words/',
+const ZhIndexLazyRoute = ZhIndexLazyImport.update({
+  id: '/zh/',
+  path: '/zh/',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/words/index.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/zh/index.lazy').then((d) => d.Route))
 
 const UsersIndexLazyRoute = UsersIndexLazyImport.update({
   id: '/users/',
   path: '/users/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/users/index.lazy').then((d) => d.Route))
+
+const UnitIndexLazyRoute = UnitIndexLazyImport.update({
+  id: '/unit/',
+  path: '/unit/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/unit/index.lazy').then((d) => d.Route))
+
+const PtIndexLazyRoute = PtIndexLazyImport.update({
+  id: '/pt/',
+  path: '/pt/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/pt/index.lazy').then((d) => d.Route))
+
+const PronounsIndexLazyRoute = PronounsIndexLazyImport.update({
+  id: '/pronouns/',
+  path: '/pronouns/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/pronouns/index.lazy').then((d) => d.Route),
+)
+
+const JaIndexLazyRoute = JaIndexLazyImport.update({
+  id: '/ja/',
+  path: '/ja/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/ja/index.lazy').then((d) => d.Route))
+
+const ItIndexLazyRoute = ItIndexLazyImport.update({
+  id: '/it/',
+  path: '/it/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/it/index.lazy').then((d) => d.Route))
+
+const FrIndexLazyRoute = FrIndexLazyImport.update({
+  id: '/fr/',
+  path: '/fr/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/fr/index.lazy').then((d) => d.Route))
+
+const EsIndexLazyRoute = EsIndexLazyImport.update({
+  id: '/es/',
+  path: '/es/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/es/index.lazy').then((d) => d.Route))
+
+const EnIndexLazyRoute = EnIndexLazyImport.update({
+  id: '/en/',
+  path: '/en/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/en/index.lazy').then((d) => d.Route))
 
 const EnPhrasesLazyRoute = EnPhrasesLazyImport.update({
   id: '/en/phrases',
@@ -81,13 +132,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/notFoundComponent': {
       id: '/notFoundComponent'
       path: '/notFoundComponent'
@@ -109,6 +153,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnPhrasesLazyImport
       parentRoute: typeof rootRoute
     }
+    '/en/': {
+      id: '/en/'
+      path: '/en'
+      fullPath: '/en'
+      preLoaderRoute: typeof EnIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/es/': {
+      id: '/es/'
+      path: '/es'
+      fullPath: '/es'
+      preLoaderRoute: typeof EsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/fr/': {
+      id: '/fr/'
+      path: '/fr'
+      fullPath: '/fr'
+      preLoaderRoute: typeof FrIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/it/': {
+      id: '/it/'
+      path: '/it'
+      fullPath: '/it'
+      preLoaderRoute: typeof ItIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/ja/': {
+      id: '/ja/'
+      path: '/ja'
+      fullPath: '/ja'
+      preLoaderRoute: typeof JaIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/pronouns/': {
+      id: '/pronouns/'
+      path: '/pronouns'
+      fullPath: '/pronouns'
+      preLoaderRoute: typeof PronounsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/pt/': {
+      id: '/pt/'
+      path: '/pt'
+      fullPath: '/pt'
+      preLoaderRoute: typeof PtIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/unit/': {
+      id: '/unit/'
+      path: '/unit'
+      fullPath: '/unit'
+      preLoaderRoute: typeof UnitIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/users/': {
       id: '/users/'
       path: '/users'
@@ -116,11 +216,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersIndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/words/': {
-      id: '/words/'
-      path: '/words'
-      fullPath: '/words'
-      preLoaderRoute: typeof WordsIndexLazyImport
+    '/zh/': {
+      id: '/zh/'
+      path: '/zh'
+      fullPath: '/zh'
+      preLoaderRoute: typeof ZhIndexLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -130,84 +230,140 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
   '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
   '/en/phrases': typeof EnPhrasesLazyRoute
+  '/en': typeof EnIndexLazyRoute
+  '/es': typeof EsIndexLazyRoute
+  '/fr': typeof FrIndexLazyRoute
+  '/it': typeof ItIndexLazyRoute
+  '/ja': typeof JaIndexLazyRoute
+  '/pronouns': typeof PronounsIndexLazyRoute
+  '/pt': typeof PtIndexLazyRoute
+  '/unit': typeof UnitIndexLazyRoute
   '/users': typeof UsersIndexLazyRoute
-  '/words': typeof WordsIndexLazyRoute
+  '/zh': typeof ZhIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
   '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
   '/en/phrases': typeof EnPhrasesLazyRoute
+  '/en': typeof EnIndexLazyRoute
+  '/es': typeof EsIndexLazyRoute
+  '/fr': typeof FrIndexLazyRoute
+  '/it': typeof ItIndexLazyRoute
+  '/ja': typeof JaIndexLazyRoute
+  '/pronouns': typeof PronounsIndexLazyRoute
+  '/pt': typeof PtIndexLazyRoute
+  '/unit': typeof UnitIndexLazyRoute
   '/users': typeof UsersIndexLazyRoute
-  '/words': typeof WordsIndexLazyRoute
+  '/zh': typeof ZhIndexLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
   '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
   '/en/phrases': typeof EnPhrasesLazyRoute
+  '/en/': typeof EnIndexLazyRoute
+  '/es/': typeof EsIndexLazyRoute
+  '/fr/': typeof FrIndexLazyRoute
+  '/it/': typeof ItIndexLazyRoute
+  '/ja/': typeof JaIndexLazyRoute
+  '/pronouns/': typeof PronounsIndexLazyRoute
+  '/pt/': typeof PtIndexLazyRoute
+  '/unit/': typeof UnitIndexLazyRoute
   '/users/': typeof UsersIndexLazyRoute
-  '/words/': typeof WordsIndexLazyRoute
+  '/zh/': typeof ZhIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/notFoundComponent'
     | '/users/$username'
     | '/en/phrases'
+    | '/en'
+    | '/es'
+    | '/fr'
+    | '/it'
+    | '/ja'
+    | '/pronouns'
+    | '/pt'
+    | '/unit'
     | '/users'
-    | '/words'
+    | '/zh'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/notFoundComponent'
     | '/users/$username'
     | '/en/phrases'
+    | '/en'
+    | '/es'
+    | '/fr'
+    | '/it'
+    | '/ja'
+    | '/pronouns'
+    | '/pt'
+    | '/unit'
     | '/users'
-    | '/words'
+    | '/zh'
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/notFoundComponent'
     | '/users/$username'
     | '/en/phrases'
+    | '/en/'
+    | '/es/'
+    | '/fr/'
+    | '/it/'
+    | '/ja/'
+    | '/pronouns/'
+    | '/pt/'
+    | '/unit/'
     | '/users/'
-    | '/words/'
+    | '/zh/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  AboutLazyRoute: typeof AboutLazyRoute
   NotFoundComponentLazyRoute: typeof NotFoundComponentLazyRoute
   UsersUsernameRoute: typeof UsersUsernameRoute
   EnPhrasesLazyRoute: typeof EnPhrasesLazyRoute
+  EnIndexLazyRoute: typeof EnIndexLazyRoute
+  EsIndexLazyRoute: typeof EsIndexLazyRoute
+  FrIndexLazyRoute: typeof FrIndexLazyRoute
+  ItIndexLazyRoute: typeof ItIndexLazyRoute
+  JaIndexLazyRoute: typeof JaIndexLazyRoute
+  PronounsIndexLazyRoute: typeof PronounsIndexLazyRoute
+  PtIndexLazyRoute: typeof PtIndexLazyRoute
+  UnitIndexLazyRoute: typeof UnitIndexLazyRoute
   UsersIndexLazyRoute: typeof UsersIndexLazyRoute
-  WordsIndexLazyRoute: typeof WordsIndexLazyRoute
+  ZhIndexLazyRoute: typeof ZhIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AboutLazyRoute: AboutLazyRoute,
   NotFoundComponentLazyRoute: NotFoundComponentLazyRoute,
   UsersUsernameRoute: UsersUsernameRoute,
   EnPhrasesLazyRoute: EnPhrasesLazyRoute,
+  EnIndexLazyRoute: EnIndexLazyRoute,
+  EsIndexLazyRoute: EsIndexLazyRoute,
+  FrIndexLazyRoute: FrIndexLazyRoute,
+  ItIndexLazyRoute: ItIndexLazyRoute,
+  JaIndexLazyRoute: JaIndexLazyRoute,
+  PronounsIndexLazyRoute: PronounsIndexLazyRoute,
+  PtIndexLazyRoute: PtIndexLazyRoute,
+  UnitIndexLazyRoute: UnitIndexLazyRoute,
   UsersIndexLazyRoute: UsersIndexLazyRoute,
-  WordsIndexLazyRoute: WordsIndexLazyRoute,
+  ZhIndexLazyRoute: ZhIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -221,19 +377,23 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about",
         "/notFoundComponent",
         "/users/$username",
         "/en/phrases",
+        "/en/",
+        "/es/",
+        "/fr/",
+        "/it/",
+        "/ja/",
+        "/pronouns/",
+        "/pt/",
+        "/unit/",
         "/users/",
-        "/words/"
+        "/zh/"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
-    },
-    "/about": {
-      "filePath": "about.lazy.tsx"
     },
     "/notFoundComponent": {
       "filePath": "notFoundComponent.lazy.tsx"
@@ -244,11 +404,35 @@ export const routeTree = rootRoute
     "/en/phrases": {
       "filePath": "en/phrases.lazy.tsx"
     },
+    "/en/": {
+      "filePath": "en/index.lazy.tsx"
+    },
+    "/es/": {
+      "filePath": "es/index.lazy.tsx"
+    },
+    "/fr/": {
+      "filePath": "fr/index.lazy.tsx"
+    },
+    "/it/": {
+      "filePath": "it/index.lazy.tsx"
+    },
+    "/ja/": {
+      "filePath": "ja/index.lazy.tsx"
+    },
+    "/pronouns/": {
+      "filePath": "pronouns/index.lazy.tsx"
+    },
+    "/pt/": {
+      "filePath": "pt/index.lazy.tsx"
+    },
+    "/unit/": {
+      "filePath": "unit/index.lazy.tsx"
+    },
     "/users/": {
       "filePath": "users/index.lazy.tsx"
     },
-    "/words/": {
-      "filePath": "words/index.lazy.tsx"
+    "/zh/": {
+      "filePath": "zh/index.lazy.tsx"
     }
   }
 }

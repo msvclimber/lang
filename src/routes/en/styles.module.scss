@@ -1,0 +1,17 @@
+@use "@/shared/ui/styles/colors.module.scss";
+
+.block {
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 8px;
+  border: 1px solid colors.$grey40;
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > a {
+    padding: 64px 50px;
+  }
+}

@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
+import "./global.css";
 import styles from "./styles.module.scss";
 
 export const Route = createRootRoute({
@@ -9,39 +10,71 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <div>
-        <div className={styles.lang}>
+      <div className={styles.header}>
+        <div>
+          <div className={styles.lang}>
+            <div>
+              <Link to="/en" className="[&.active]:font-bold">
+                En
+              </Link>
+            </div>
+          </div>
+          <div className={styles.lang}>
+            <div>
+              <Link to="/es" className="[&.active]:font-bold">
+                Es
+              </Link>
+            </div>
+          </div>
+          <div className={styles.lang}>
+            <div>
+              <Link to="/zh" className="[&.active]:font-bold">
+                Zh
+              </Link>
+            </div>
+          </div>
+          <div className={styles.lang}>
+            <div>
+              <Link to="/fr" className="[&.active]:font-bold">
+                Fr
+              </Link>
+            </div>
+          </div>
+          <div className={styles.lang}>
+            <div>
+              <Link to="/it" className="[&.active]:font-bold">
+                It
+              </Link>
+            </div>
+          </div>
+          <div className={styles.lang}>
+            <div>
+              <Link to="/pt" className="[&.active]:font-bold">
+                Pt
+              </Link>
+            </div>
+          </div>
+          <div className={styles.lang}>
+            <div>
+              <Link to="/ja" className="[&.active]:font-bold">
+                Ja
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className={styles.util}>
           <div>
             <Link to="/" className="[&.active]:font-bold">
               Home
             </Link>
-          </div>
-        </div>
-        <div className={styles.lang}>
-          <div>
-            <Link to="/about" className="[&.active]:font-bold">
-              About
-            </Link>
-          </div>
-        </div>
-        <div className={styles.lang}>
-          <div>
             <Link to="/users" className="[&.active]:font-bold">
               Users
             </Link>
-          </div>
-        </div>
-        <div className={styles.lang}>
-          <div>
-            <Link to="/words" className="[&.active]:font-bold">
+            <Link to="/unit" className="[&.active]:font-bold">
               Words
             </Link>
-          </div>
-        </div>
-        <div className={styles.lang}>
-          <div>
-            <Link to="/en/phrases" className="[&.active]:font-bold">
-              Фразы
+            <Link to="/pronouns" className="[&.active]:font-bold">
+              Местоимения
             </Link>
           </div>
         </div>
