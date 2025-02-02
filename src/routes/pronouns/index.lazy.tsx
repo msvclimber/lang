@@ -1,13 +1,15 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-export const Route = createLazyFileRoute('/pronouns/')({
+import AppTitle from "@/features/AppTitle";
+
+export const Route = createLazyFileRoute("/pronouns/")({
   component: Index,
-})
+});
 
 function Index() {
   return (
-    <div className="p-2">
-      <h3>Местоимения</h3>
+    <div>
+      <AppTitle title="Местоимения" />
     </div>
-  )
+  );
 }

@@ -1,13 +1,15 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-export const Route = createLazyFileRoute('/unit/')({
+import AppTitle from "@/features/AppTitle";
+
+export const Route = createLazyFileRoute("/unit/")({
   component: Index,
-})
+});
 
 function Index() {
   return (
-    <div className="p-2">
-      <h3>Welcome Words Home!</h3>
+    <div>
+      <AppTitle title="Welcome Words Home!" />
     </div>
-  )
+  );
 }

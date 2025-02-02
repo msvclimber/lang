@@ -12,53 +12,99 @@ function RootComponent() {
     <>
       <div className={styles.header}>
         <div>
-          <div className={styles.lang}>
-            <div>
-              <Link to="/en" className="[&.active]:font-bold">
-                En
-              </Link>
+          <div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/en" className="[&.active]:font-bold">
+                  En
+                </Link>
+              </div>
+            </div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/es" className="[&.active]:font-bold">
+                  Es
+                </Link>
+              </div>
+            </div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/zh" className="[&.active]:font-bold">
+                  Zh
+                </Link>
+              </div>
+            </div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/fr" className="[&.active]:font-bold">
+                  Fr
+                </Link>
+              </div>
+            </div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/it" className="[&.active]:font-bold">
+                  It
+                </Link>
+              </div>
+            </div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/pt" className="[&.active]:font-bold">
+                  Pt
+                </Link>
+              </div>
+            </div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/ja" className="[&.active]:font-bold">
+                  Ja
+                </Link>
+              </div>
             </div>
           </div>
-          <div className={styles.lang}>
-            <div>
-              <Link to="/es" className="[&.active]:font-bold">
-                Es
-              </Link>
+          <div>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/sw" className="[&.active]:font-bold">
+                  Sw
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={styles.lang}>
-            <div>
-              <Link to="/zh" className="[&.active]:font-bold">
-                Zh
-              </Link>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/id" className="[&.active]:font-bold">
+                  Id
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={styles.lang}>
-            <div>
-              <Link to="/fr" className="[&.active]:font-bold">
-                Fr
-              </Link>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/tr" className="[&.active]:font-bold">
+                  Tr
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={styles.lang}>
-            <div>
-              <Link to="/it" className="[&.active]:font-bold">
-                It
-              </Link>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/fa" className="[&.active]:font-bold">
+                  Fa
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={styles.lang}>
-            <div>
-              <Link to="/pt" className="[&.active]:font-bold">
-                Pt
-              </Link>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/ar" className="[&.active]:font-bold">
+                  Ar
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={styles.lang}>
-            <div>
-              <Link to="/ja" className="[&.active]:font-bold">
-                Ja
-              </Link>
+            <div className={styles.lang}>
+              <div>
+                <Link to="/hi" className="[&.active]:font-bold">
+                  Hi
+                </Link>
+              </div>
             </div>
           </div>
         </div>

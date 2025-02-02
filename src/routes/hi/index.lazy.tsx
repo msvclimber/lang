@@ -5,16 +5,16 @@ import BlockLink from "@/features/BlockLink";
 
 import styles from "./styles.module.scss";
 
-export const Route = createLazyFileRoute("/fr/")({
+export const Route = createLazyFileRoute("/hi/")({
   component: Index,
 });
 
 function Index() {
   return (
     <div>
-      <AppTitle title="Французский" />
+      <AppTitle title="Хинди" />
       <div className={styles.blockList}>
-        <BlockLink to="/fr/alphabet" title="Алфавит" />
+        <BlockLink to="/hi/alphabet" title="Алфавит" />
       </div>
     </div>
   );

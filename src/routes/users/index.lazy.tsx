@@ -1,4 +1,6 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router';
+
+import AppTitle from "@/features/AppTitle";
 
 export const Route = createLazyFileRoute('/users/')({
   component: Index,
@@ -6,8 +8,8 @@ export const Route = createLazyFileRoute('/users/')({
 
 function Index() {
   return (
-    <div className="p-2">
-      <h3>Welcome User Home!</h3>
+    <div>
+      <AppTitle title="Welcome User Home!" />
     </div>
   )
 }

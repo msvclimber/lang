@@ -1,5 +1,7 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
+
+import AppTitle from "@/features/AppTitle";
+import BlockLink from "@/features/BlockLink";
 
 import styles from "./styles.module.scss";
 
@@ -9,12 +11,11 @@ export const Route = createLazyFileRoute("/en/")({
 
 function Index() {
   return (
-    <div className="p-2">
-      <h3>Английский</h3>
-      <div className={styles.block}>
-        <Link to="/en/phrases" className="[&.active]:font-bold">
-          Фразы
-        </Link>
+    <div>
+      <AppTitle title="Английский" />
+      <div className={styles.blockList}>
+        <BlockLink to="/en/phrases" title="Фразы" />
+        <BlockLink to="/en/alphabet" title="Алфавит" />
       </div>
     </div>
   );
