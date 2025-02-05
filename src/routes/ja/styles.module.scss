@@ -1,3 +1,22 @@
+@use "@/shared/ui/styles/colors.module.scss";
+
 .blockList {
   display: flex;
+}
+
+.grid {
+  margin: 0 auto;
+  font-size: 32px;
+
+  td {
+    padding: 10px 14px;
+    user-select: none;
+
+    & > div {
+      text-align: center;
+      font-size: 16px;
+      margin-top: -8px;
+      color: colors.$grey60;
+    }
+  }
 }

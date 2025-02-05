@@ -1,0 +1,21 @@
+.gridRoot {
+  border-radius: 4px;
+  // border: 1px solid grey;
+  border-collapse: collapse;
+
+  // &:first-child td:first-child {
+  //   border-top-left-radius: 4px;
+  // }
+  
+}
+
+//.gridRoot tr:first-child th:first-child { border-top-left-radius: 10px; }
+
+.gridRow {
+  // border: 1px solid grey;
+  padding: 4px;
+
+  &:first-child td:first-child {
+    border-top-left-radius: 4px;
+  }
+}
