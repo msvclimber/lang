@@ -105,9 +105,6 @@ function RootComponent() {
             <Link to="/unit" className="[&.active]:font-bold">
               Words
             </Link>
-            <Link to="/pronouns" className="[&.active]:font-bold">
-              Местоимения
-            </Link>
           </div>
         </div>
       </div>

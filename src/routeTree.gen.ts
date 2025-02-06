@@ -25,7 +25,6 @@ const UnitIndexLazyImport = createFileRoute('/unit/')()
 const TrIndexLazyImport = createFileRoute('/tr/')()
 const SwIndexLazyImport = createFileRoute('/sw/')()
 const PtIndexLazyImport = createFileRoute('/pt/')()
-const PronounsIndexLazyImport = createFileRoute('/pronouns/')()
 const JaIndexLazyImport = createFileRoute('/ja/')()
 const ItIndexLazyImport = createFileRoute('/it/')()
 const IdIndexLazyImport = createFileRoute('/id/')()
@@ -49,6 +48,7 @@ const EsAlphabetLazyImport = createFileRoute('/es/alphabet')()
 const EnPhrasesLazyImport = createFileRoute('/en/phrases')()
 const EnAlphabetLazyImport = createFileRoute('/en/alphabet')()
 const ArAlphabetLazyImport = createFileRoute('/ar/alphabet')()
+const EnPronounsIndexLazyImport = createFileRoute('/en/pronouns/')()
 
 // Create/Update Routes
 
@@ -101,14 +101,6 @@ const PtIndexLazyRoute = PtIndexLazyImport.update({
   path: '/pt/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/pt/index.lazy').then((d) => d.Route))
-
-const PronounsIndexLazyRoute = PronounsIndexLazyImport.update({
-  id: '/pronouns/',
-  path: '/pronouns/',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() =>
-  import('./routes/pronouns/index.lazy').then((d) => d.Route),
-)
 
 const JaIndexLazyRoute = JaIndexLazyImport.update({
   id: '/ja/',
@@ -253,6 +245,14 @@ const UsersUsernameRoute = UsersUsernameImport.update({
   path: '/users/$username',
   getParentRoute: () => rootRoute,
 } as any)
+
+const EnPronounsIndexLazyRoute = EnPronounsIndexLazyImport.update({
+  id: '/en/pronouns/',
+  path: '/en/pronouns/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/en/pronouns/index.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -440,13 +440,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JaIndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/pronouns/': {
-      id: '/pronouns/'
-      path: '/pronouns'
-      fullPath: '/pronouns'
-      preLoaderRoute: typeof PronounsIndexLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/pt/': {
       id: '/pt/'
       path: '/pt'
@@ -489,6 +482,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZhIndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/en/pronouns/': {
+      id: '/en/pronouns/'
+      path: '/en/pronouns'
+      fullPath: '/en/pronouns'
+      preLoaderRoute: typeof EnPronounsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -521,13 +521,13 @@ export interface FileRoutesByFullPath {
   '/id': typeof IdIndexLazyRoute
   '/it': typeof ItIndexLazyRoute
   '/ja': typeof JaIndexLazyRoute
-  '/pronouns': typeof PronounsIndexLazyRoute
   '/pt': typeof PtIndexLazyRoute
   '/sw': typeof SwIndexLazyRoute
   '/tr': typeof TrIndexLazyRoute
   '/unit': typeof UnitIndexLazyRoute
   '/users': typeof UsersIndexLazyRoute
   '/zh': typeof ZhIndexLazyRoute
+  '/en/pronouns': typeof EnPronounsIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
@@ -557,13 +557,13 @@ export interface FileRoutesByTo {
   '/id': typeof IdIndexLazyRoute
   '/it': typeof ItIndexLazyRoute
   '/ja': typeof JaIndexLazyRoute
-  '/pronouns': typeof PronounsIndexLazyRoute
   '/pt': typeof PtIndexLazyRoute
   '/sw': typeof SwIndexLazyRoute
   '/tr': typeof TrIndexLazyRoute
   '/unit': typeof UnitIndexLazyRoute
   '/users': typeof UsersIndexLazyRoute
   '/zh': typeof ZhIndexLazyRoute
+  '/en/pronouns': typeof EnPronounsIndexLazyRoute
 }
 
 export interface FileRoutesById {
@@ -594,13 +594,13 @@ export interface FileRoutesById {
   '/id/': typeof IdIndexLazyRoute
   '/it/': typeof ItIndexLazyRoute
   '/ja/': typeof JaIndexLazyRoute
-  '/pronouns/': typeof PronounsIndexLazyRoute
   '/pt/': typeof PtIndexLazyRoute
   '/sw/': typeof SwIndexLazyRoute
   '/tr/': typeof TrIndexLazyRoute
   '/unit/': typeof UnitIndexLazyRoute
   '/users/': typeof UsersIndexLazyRoute
   '/zh/': typeof ZhIndexLazyRoute
+  '/en/pronouns/': typeof EnPronounsIndexLazyRoute
 }
 
 export interface FileRouteTypes {
@@ -632,13 +632,13 @@ export interface FileRouteTypes {
     | '/id'
     | '/it'
     | '/ja'
-    | '/pronouns'
     | '/pt'
     | '/sw'
     | '/tr'
     | '/unit'
     | '/users'
     | '/zh'
+    | '/en/pronouns'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -667,13 +667,13 @@ export interface FileRouteTypes {
     | '/id'
     | '/it'
     | '/ja'
-    | '/pronouns'
     | '/pt'
     | '/sw'
     | '/tr'
     | '/unit'
     | '/users'
     | '/zh'
+    | '/en/pronouns'
   id:
     | '__root__'
     | '/'
@@ -702,13 +702,13 @@ export interface FileRouteTypes {
     | '/id/'
     | '/it/'
     | '/ja/'
-    | '/pronouns/'
     | '/pt/'
     | '/sw/'
     | '/tr/'
     | '/unit/'
     | '/users/'
     | '/zh/'
+    | '/en/pronouns/'
   fileRoutesById: FileRoutesById
 }
 
@@ -739,13 +739,13 @@ export interface RootRouteChildren {
   IdIndexLazyRoute: typeof IdIndexLazyRoute
   ItIndexLazyRoute: typeof ItIndexLazyRoute
   JaIndexLazyRoute: typeof JaIndexLazyRoute
-  PronounsIndexLazyRoute: typeof PronounsIndexLazyRoute
   PtIndexLazyRoute: typeof PtIndexLazyRoute
   SwIndexLazyRoute: typeof SwIndexLazyRoute
   TrIndexLazyRoute: typeof TrIndexLazyRoute
   UnitIndexLazyRoute: typeof UnitIndexLazyRoute
   UsersIndexLazyRoute: typeof UsersIndexLazyRoute
   ZhIndexLazyRoute: typeof ZhIndexLazyRoute
+  EnPronounsIndexLazyRoute: typeof EnPronounsIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -775,13 +775,13 @@ const rootRouteChildren: RootRouteChildren = {
   IdIndexLazyRoute: IdIndexLazyRoute,
   ItIndexLazyRoute: ItIndexLazyRoute,
   JaIndexLazyRoute: JaIndexLazyRoute,
-  PronounsIndexLazyRoute: PronounsIndexLazyRoute,
   PtIndexLazyRoute: PtIndexLazyRoute,
   SwIndexLazyRoute: SwIndexLazyRoute,
   TrIndexLazyRoute: TrIndexLazyRoute,
   UnitIndexLazyRoute: UnitIndexLazyRoute,
   UsersIndexLazyRoute: UsersIndexLazyRoute,
   ZhIndexLazyRoute: ZhIndexLazyRoute,
+  EnPronounsIndexLazyRoute: EnPronounsIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -820,13 +820,13 @@ export const routeTree = rootRoute
         "/id/",
         "/it/",
         "/ja/",
-        "/pronouns/",
         "/pt/",
         "/sw/",
         "/tr/",
         "/unit/",
         "/users/",
-        "/zh/"
+        "/zh/",
+        "/en/pronouns/"
       ]
     },
     "/": {
@@ -907,9 +907,6 @@ export const routeTree = rootRoute
     "/ja/": {
       "filePath": "ja/index.lazy.tsx"
     },
-    "/pronouns/": {
-      "filePath": "pronouns/index.lazy.tsx"
-    },
     "/pt/": {
       "filePath": "pt/index.lazy.tsx"
     },
@@ -927,6 +924,9 @@ export const routeTree = rootRoute
     },
     "/zh/": {
       "filePath": "zh/index.lazy.tsx"
+    },
+    "/en/pronouns/": {
+      "filePath": "en/pronouns/index.lazy.tsx"
     }
   }
 }
