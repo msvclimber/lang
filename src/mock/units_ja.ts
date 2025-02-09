@@ -17,4 +17,22 @@ export default [
     level: "A1",
     jlpt: "N5",
   },
+  {
+    id: "sun",
+    word: "太陽",
+    ru: "солнце",
+    tr: "たいよう",
+    category: "weather",
+    level: "A1",
+    //jlpt: "N5",
+  },
+  {
+    id: "day",
+    word: "日",
+    ru: "день",
+    tr: "ひ",
+    category: "calendar",
+    level: "A1",
+    jlpt: "N5",
+  },
 ];

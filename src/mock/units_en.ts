@@ -15,4 +15,20 @@ export default [
     category: "education",
     level: "A1",
   },
+  {
+    id: "sun",
+    word: "sun",
+    ru: "солнце",
+    tr: "[sʌn]",
+    category: "weather",
+    level: "A1",
+  },
+  {
+    id: "day",
+    word: "day",
+    ru: "день",
+    tr: "[deɪ]",
+    category: "calendar",
+    level: "A1",
+  },
 ];
