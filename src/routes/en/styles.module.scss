@@ -1,5 +1,9 @@
 @use "@/shared/ui/styles/colors.module.scss";
 
+.blockList {
+  display: flex;
+}
+
 .grid {
   margin: 0 auto;
   font-size: 32px;
