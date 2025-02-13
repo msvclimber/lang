@@ -6,6 +6,8 @@ export default [
     tr: "[ˈwɔːtə]",
     category: "eat",
     level: "A1",
+    partsSpeech: 'noun',
+    top3000: true,
   },
   {
     id: "book",
@@ -14,6 +16,7 @@ export default [
     tr: "[bʊk]",
     category: "education",
     level: "A1",
+    topOxford3000: true,
   },
   {
     id: "sun",
@@ -22,6 +25,7 @@ export default [
     tr: "[sʌn]",
     category: "weather",
     level: "A1",
+    topOxford3000: true,
   },
   {
     id: "day",
@@ -30,5 +34,25 @@ export default [
     tr: "[deɪ]",
     category: "calendar",
     level: "A1",
+    topOxford3000: true,
+  },
+  {
+    id: "lay-off",
+    word: "layoff",
+    ru: "сокращен",
+    tr: "[ˈleɪɒf]",
+    category: "business",
+    level: "C2",
+    topOxford3000: false,
+  },
+  {
+    id: "red",
+    word: "red",
+    ru: "красный",
+    tr: "[red]",
+    category: "coloursShapes",
+    level: "A1",
+    partsSpeech: 'adjective',
+    topOxford3000: true,
   },
 ];
