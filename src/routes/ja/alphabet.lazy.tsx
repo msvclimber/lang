@@ -4,8 +4,6 @@ import type { IGridCell } from "@/shared/ui/Grid/types";
 
 import Grid from "@/shared/ui/Grid";
 
-import AppTitle from "@/features/AppTitle";
-
 import styles from "./styles.module.scss";
 
 export const Route = createLazyFileRoute("/ja/alphabet")({
@@ -83,7 +81,6 @@ const jaAlphabet: IGridCell[][] = [
 function RouteComponent() {
   return (
     <div>
-      <AppTitle title="Японский алфавит" />
       <h2>Хирагана</h2>
       <Grid className={styles.grid} data={jaAlphabet} />
     </div>

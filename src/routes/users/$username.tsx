@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import NoUserComponent from "../../shared/NoUserComponent";
+import NoUserComponent from "../../features/NoUserComponent";
 
 async function fetchUserData(username: string): Promise<{ name: string }> {
   return new Promise((resolve, reject) => {

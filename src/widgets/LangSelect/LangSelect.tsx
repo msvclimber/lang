@@ -1,4 +1,5 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { FC } from "react";
+import { Link } from "@tanstack/react-router";
 
 import styles from "./styles.module.scss";
 
@@ -16,9 +17,11 @@ const langs: Record<string, boolean> = {
   hi: true,
 };
 
-const LangSelect = () => {
-  const url = useRouterState();
-  const params = url.location.pathname.split("/");
+interface ILangSelect {
+  params: string[];
+}
+
+const LangSelect: FC<ILangSelect> = ({ params }) => {
   const restPath = langs[params[1]] ? "/" + params.slice(2).join("/") : "";
 
   return (

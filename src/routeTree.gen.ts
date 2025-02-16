@@ -24,16 +24,15 @@ const UsersIndexLazyImport = createFileRoute('/users/')()
 const UnitIndexLazyImport = createFileRoute('/unit/')()
 const TrIndexLazyImport = createFileRoute('/tr/')()
 const SwIndexLazyImport = createFileRoute('/sw/')()
+const SettingsIndexLazyImport = createFileRoute('/settings/')()
 const PtIndexLazyImport = createFileRoute('/pt/')()
 const JaIndexLazyImport = createFileRoute('/ja/')()
 const ItIndexLazyImport = createFileRoute('/it/')()
 const IdIndexLazyImport = createFileRoute('/id/')()
 const HiIndexLazyImport = createFileRoute('/hi/')()
 const FrIndexLazyImport = createFileRoute('/fr/')()
-const FaIndexLazyImport = createFileRoute('/fa/')()
 const EsIndexLazyImport = createFileRoute('/es/')()
 const EnIndexLazyImport = createFileRoute('/en/')()
-const ArIndexLazyImport = createFileRoute('/ar/')()
 const ZhAlphabetLazyImport = createFileRoute('/zh/alphabet')()
 const TrAlphabetLazyImport = createFileRoute('/tr/alphabet')()
 const SwAlphabetLazyImport = createFileRoute('/sw/alphabet')()
@@ -43,11 +42,9 @@ const ItAlphabetLazyImport = createFileRoute('/it/alphabet')()
 const IdAlphabetLazyImport = createFileRoute('/id/alphabet')()
 const HiAlphabetLazyImport = createFileRoute('/hi/alphabet')()
 const FrAlphabetLazyImport = createFileRoute('/fr/alphabet')()
-const FaAlphabetLazyImport = createFileRoute('/fa/alphabet')()
 const EsAlphabetLazyImport = createFileRoute('/es/alphabet')()
 const EnPhrasesLazyImport = createFileRoute('/en/phrases')()
 const EnAlphabetLazyImport = createFileRoute('/en/alphabet')()
-const ArAlphabetLazyImport = createFileRoute('/ar/alphabet')()
 const EnPronounsIndexLazyImport = createFileRoute('/en/pronouns/')()
 
 // Create/Update Routes
@@ -96,6 +93,14 @@ const SwIndexLazyRoute = SwIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/sw/index.lazy').then((d) => d.Route))
 
+const SettingsIndexLazyRoute = SettingsIndexLazyImport.update({
+  id: '/settings/',
+  path: '/settings/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/settings/index.lazy').then((d) => d.Route),
+)
+
 const PtIndexLazyRoute = PtIndexLazyImport.update({
   id: '/pt/',
   path: '/pt/',
@@ -132,12 +137,6 @@ const FrIndexLazyRoute = FrIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/fr/index.lazy').then((d) => d.Route))
 
-const FaIndexLazyRoute = FaIndexLazyImport.update({
-  id: '/fa/',
-  path: '/fa/',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/fa/index.lazy').then((d) => d.Route))
-
 const EsIndexLazyRoute = EsIndexLazyImport.update({
   id: '/es/',
   path: '/es/',
@@ -149,12 +148,6 @@ const EnIndexLazyRoute = EnIndexLazyImport.update({
   path: '/en/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/en/index.lazy').then((d) => d.Route))
-
-const ArIndexLazyRoute = ArIndexLazyImport.update({
-  id: '/ar/',
-  path: '/ar/',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/ar/index.lazy').then((d) => d.Route))
 
 const ZhAlphabetLazyRoute = ZhAlphabetLazyImport.update({
   id: '/zh/alphabet',
@@ -210,12 +203,6 @@ const FrAlphabetLazyRoute = FrAlphabetLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/fr/alphabet.lazy').then((d) => d.Route))
 
-const FaAlphabetLazyRoute = FaAlphabetLazyImport.update({
-  id: '/fa/alphabet',
-  path: '/fa/alphabet',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/fa/alphabet.lazy').then((d) => d.Route))
-
 const EsAlphabetLazyRoute = EsAlphabetLazyImport.update({
   id: '/es/alphabet',
   path: '/es/alphabet',
@@ -233,12 +220,6 @@ const EnAlphabetLazyRoute = EnAlphabetLazyImport.update({
   path: '/en/alphabet',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/en/alphabet.lazy').then((d) => d.Route))
-
-const ArAlphabetLazyRoute = ArAlphabetLazyImport.update({
-  id: '/ar/alphabet',
-  path: '/ar/alphabet',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/ar/alphabet.lazy').then((d) => d.Route))
 
 const UsersUsernameRoute = UsersUsernameImport.update({
   id: '/users/$username',
@@ -279,13 +260,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersUsernameImport
       parentRoute: typeof rootRoute
     }
-    '/ar/alphabet': {
-      id: '/ar/alphabet'
-      path: '/ar/alphabet'
-      fullPath: '/ar/alphabet'
-      preLoaderRoute: typeof ArAlphabetLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/en/alphabet': {
       id: '/en/alphabet'
       path: '/en/alphabet'
@@ -305,13 +279,6 @@ declare module '@tanstack/react-router' {
       path: '/es/alphabet'
       fullPath: '/es/alphabet'
       preLoaderRoute: typeof EsAlphabetLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/fa/alphabet': {
-      id: '/fa/alphabet'
-      path: '/fa/alphabet'
-      fullPath: '/fa/alphabet'
-      preLoaderRoute: typeof FaAlphabetLazyImport
       parentRoute: typeof rootRoute
     }
     '/fr/alphabet': {
@@ -377,13 +344,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZhAlphabetLazyImport
       parentRoute: typeof rootRoute
     }
-    '/ar/': {
-      id: '/ar/'
-      path: '/ar'
-      fullPath: '/ar'
-      preLoaderRoute: typeof ArIndexLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/en/': {
       id: '/en/'
       path: '/en'
@@ -396,13 +356,6 @@ declare module '@tanstack/react-router' {
       path: '/es'
       fullPath: '/es'
       preLoaderRoute: typeof EsIndexLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/fa/': {
-      id: '/fa/'
-      path: '/fa'
-      fullPath: '/fa'
-      preLoaderRoute: typeof FaIndexLazyImport
       parentRoute: typeof rootRoute
     }
     '/fr/': {
@@ -445,6 +398,13 @@ declare module '@tanstack/react-router' {
       path: '/pt'
       fullPath: '/pt'
       preLoaderRoute: typeof PtIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/settings/': {
+      id: '/settings/'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsIndexLazyImport
       parentRoute: typeof rootRoute
     }
     '/sw/': {
@@ -498,11 +458,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
-  '/ar/alphabet': typeof ArAlphabetLazyRoute
   '/en/alphabet': typeof EnAlphabetLazyRoute
   '/en/phrases': typeof EnPhrasesLazyRoute
   '/es/alphabet': typeof EsAlphabetLazyRoute
-  '/fa/alphabet': typeof FaAlphabetLazyRoute
   '/fr/alphabet': typeof FrAlphabetLazyRoute
   '/hi/alphabet': typeof HiAlphabetLazyRoute
   '/id/alphabet': typeof IdAlphabetLazyRoute
@@ -512,16 +470,15 @@ export interface FileRoutesByFullPath {
   '/sw/alphabet': typeof SwAlphabetLazyRoute
   '/tr/alphabet': typeof TrAlphabetLazyRoute
   '/zh/alphabet': typeof ZhAlphabetLazyRoute
-  '/ar': typeof ArIndexLazyRoute
   '/en': typeof EnIndexLazyRoute
   '/es': typeof EsIndexLazyRoute
-  '/fa': typeof FaIndexLazyRoute
   '/fr': typeof FrIndexLazyRoute
   '/hi': typeof HiIndexLazyRoute
   '/id': typeof IdIndexLazyRoute
   '/it': typeof ItIndexLazyRoute
   '/ja': typeof JaIndexLazyRoute
   '/pt': typeof PtIndexLazyRoute
+  '/settings': typeof SettingsIndexLazyRoute
   '/sw': typeof SwIndexLazyRoute
   '/tr': typeof TrIndexLazyRoute
   '/unit': typeof UnitIndexLazyRoute
@@ -534,11 +491,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
-  '/ar/alphabet': typeof ArAlphabetLazyRoute
   '/en/alphabet': typeof EnAlphabetLazyRoute
   '/en/phrases': typeof EnPhrasesLazyRoute
   '/es/alphabet': typeof EsAlphabetLazyRoute
-  '/fa/alphabet': typeof FaAlphabetLazyRoute
   '/fr/alphabet': typeof FrAlphabetLazyRoute
   '/hi/alphabet': typeof HiAlphabetLazyRoute
   '/id/alphabet': typeof IdAlphabetLazyRoute
@@ -548,16 +503,15 @@ export interface FileRoutesByTo {
   '/sw/alphabet': typeof SwAlphabetLazyRoute
   '/tr/alphabet': typeof TrAlphabetLazyRoute
   '/zh/alphabet': typeof ZhAlphabetLazyRoute
-  '/ar': typeof ArIndexLazyRoute
   '/en': typeof EnIndexLazyRoute
   '/es': typeof EsIndexLazyRoute
-  '/fa': typeof FaIndexLazyRoute
   '/fr': typeof FrIndexLazyRoute
   '/hi': typeof HiIndexLazyRoute
   '/id': typeof IdIndexLazyRoute
   '/it': typeof ItIndexLazyRoute
   '/ja': typeof JaIndexLazyRoute
   '/pt': typeof PtIndexLazyRoute
+  '/settings': typeof SettingsIndexLazyRoute
   '/sw': typeof SwIndexLazyRoute
   '/tr': typeof TrIndexLazyRoute
   '/unit': typeof UnitIndexLazyRoute
@@ -571,11 +525,9 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/notFoundComponent': typeof NotFoundComponentLazyRoute
   '/users/$username': typeof UsersUsernameRoute
-  '/ar/alphabet': typeof ArAlphabetLazyRoute
   '/en/alphabet': typeof EnAlphabetLazyRoute
   '/en/phrases': typeof EnPhrasesLazyRoute
   '/es/alphabet': typeof EsAlphabetLazyRoute
-  '/fa/alphabet': typeof FaAlphabetLazyRoute
   '/fr/alphabet': typeof FrAlphabetLazyRoute
   '/hi/alphabet': typeof HiAlphabetLazyRoute
   '/id/alphabet': typeof IdAlphabetLazyRoute
@@ -585,16 +537,15 @@ export interface FileRoutesById {
   '/sw/alphabet': typeof SwAlphabetLazyRoute
   '/tr/alphabet': typeof TrAlphabetLazyRoute
   '/zh/alphabet': typeof ZhAlphabetLazyRoute
-  '/ar/': typeof ArIndexLazyRoute
   '/en/': typeof EnIndexLazyRoute
   '/es/': typeof EsIndexLazyRoute
-  '/fa/': typeof FaIndexLazyRoute
   '/fr/': typeof FrIndexLazyRoute
   '/hi/': typeof HiIndexLazyRoute
   '/id/': typeof IdIndexLazyRoute
   '/it/': typeof ItIndexLazyRoute
   '/ja/': typeof JaIndexLazyRoute
   '/pt/': typeof PtIndexLazyRoute
+  '/settings/': typeof SettingsIndexLazyRoute
   '/sw/': typeof SwIndexLazyRoute
   '/tr/': typeof TrIndexLazyRoute
   '/unit/': typeof UnitIndexLazyRoute
@@ -609,11 +560,9 @@ export interface FileRouteTypes {
     | '/'
     | '/notFoundComponent'
     | '/users/$username'
-    | '/ar/alphabet'
     | '/en/alphabet'
     | '/en/phrases'
     | '/es/alphabet'
-    | '/fa/alphabet'
     | '/fr/alphabet'
     | '/hi/alphabet'
     | '/id/alphabet'
@@ -623,16 +572,15 @@ export interface FileRouteTypes {
     | '/sw/alphabet'
     | '/tr/alphabet'
     | '/zh/alphabet'
-    | '/ar'
     | '/en'
     | '/es'
-    | '/fa'
     | '/fr'
     | '/hi'
     | '/id'
     | '/it'
     | '/ja'
     | '/pt'
+    | '/settings'
     | '/sw'
     | '/tr'
     | '/unit'
@@ -644,11 +592,9 @@ export interface FileRouteTypes {
     | '/'
     | '/notFoundComponent'
     | '/users/$username'
-    | '/ar/alphabet'
     | '/en/alphabet'
     | '/en/phrases'
     | '/es/alphabet'
-    | '/fa/alphabet'
     | '/fr/alphabet'
     | '/hi/alphabet'
     | '/id/alphabet'
@@ -658,16 +604,15 @@ export interface FileRouteTypes {
     | '/sw/alphabet'
     | '/tr/alphabet'
     | '/zh/alphabet'
-    | '/ar'
     | '/en'
     | '/es'
-    | '/fa'
     | '/fr'
     | '/hi'
     | '/id'
     | '/it'
     | '/ja'
     | '/pt'
+    | '/settings'
     | '/sw'
     | '/tr'
     | '/unit'
@@ -679,11 +624,9 @@ export interface FileRouteTypes {
     | '/'
     | '/notFoundComponent'
     | '/users/$username'
-    | '/ar/alphabet'
     | '/en/alphabet'
     | '/en/phrases'
     | '/es/alphabet'
-    | '/fa/alphabet'
     | '/fr/alphabet'
     | '/hi/alphabet'
     | '/id/alphabet'
@@ -693,16 +636,15 @@ export interface FileRouteTypes {
     | '/sw/alphabet'
     | '/tr/alphabet'
     | '/zh/alphabet'
-    | '/ar/'
     | '/en/'
     | '/es/'
-    | '/fa/'
     | '/fr/'
     | '/hi/'
     | '/id/'
     | '/it/'
     | '/ja/'
     | '/pt/'
+    | '/settings/'
     | '/sw/'
     | '/tr/'
     | '/unit/'
@@ -716,11 +658,9 @@ export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   NotFoundComponentLazyRoute: typeof NotFoundComponentLazyRoute
   UsersUsernameRoute: typeof UsersUsernameRoute
-  ArAlphabetLazyRoute: typeof ArAlphabetLazyRoute
   EnAlphabetLazyRoute: typeof EnAlphabetLazyRoute
   EnPhrasesLazyRoute: typeof EnPhrasesLazyRoute
   EsAlphabetLazyRoute: typeof EsAlphabetLazyRoute
-  FaAlphabetLazyRoute: typeof FaAlphabetLazyRoute
   FrAlphabetLazyRoute: typeof FrAlphabetLazyRoute
   HiAlphabetLazyRoute: typeof HiAlphabetLazyRoute
   IdAlphabetLazyRoute: typeof IdAlphabetLazyRoute
@@ -730,16 +670,15 @@ export interface RootRouteChildren {
   SwAlphabetLazyRoute: typeof SwAlphabetLazyRoute
   TrAlphabetLazyRoute: typeof TrAlphabetLazyRoute
   ZhAlphabetLazyRoute: typeof ZhAlphabetLazyRoute
-  ArIndexLazyRoute: typeof ArIndexLazyRoute
   EnIndexLazyRoute: typeof EnIndexLazyRoute
   EsIndexLazyRoute: typeof EsIndexLazyRoute
-  FaIndexLazyRoute: typeof FaIndexLazyRoute
   FrIndexLazyRoute: typeof FrIndexLazyRoute
   HiIndexLazyRoute: typeof HiIndexLazyRoute
   IdIndexLazyRoute: typeof IdIndexLazyRoute
   ItIndexLazyRoute: typeof ItIndexLazyRoute
   JaIndexLazyRoute: typeof JaIndexLazyRoute
   PtIndexLazyRoute: typeof PtIndexLazyRoute
+  SettingsIndexLazyRoute: typeof SettingsIndexLazyRoute
   SwIndexLazyRoute: typeof SwIndexLazyRoute
   TrIndexLazyRoute: typeof TrIndexLazyRoute
   UnitIndexLazyRoute: typeof UnitIndexLazyRoute
@@ -752,11 +691,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   NotFoundComponentLazyRoute: NotFoundComponentLazyRoute,
   UsersUsernameRoute: UsersUsernameRoute,
-  ArAlphabetLazyRoute: ArAlphabetLazyRoute,
   EnAlphabetLazyRoute: EnAlphabetLazyRoute,
   EnPhrasesLazyRoute: EnPhrasesLazyRoute,
   EsAlphabetLazyRoute: EsAlphabetLazyRoute,
-  FaAlphabetLazyRoute: FaAlphabetLazyRoute,
   FrAlphabetLazyRoute: FrAlphabetLazyRoute,
   HiAlphabetLazyRoute: HiAlphabetLazyRoute,
   IdAlphabetLazyRoute: IdAlphabetLazyRoute,
@@ -766,16 +703,15 @@ const rootRouteChildren: RootRouteChildren = {
   SwAlphabetLazyRoute: SwAlphabetLazyRoute,
   TrAlphabetLazyRoute: TrAlphabetLazyRoute,
   ZhAlphabetLazyRoute: ZhAlphabetLazyRoute,
-  ArIndexLazyRoute: ArIndexLazyRoute,
   EnIndexLazyRoute: EnIndexLazyRoute,
   EsIndexLazyRoute: EsIndexLazyRoute,
-  FaIndexLazyRoute: FaIndexLazyRoute,
   FrIndexLazyRoute: FrIndexLazyRoute,
   HiIndexLazyRoute: HiIndexLazyRoute,
   IdIndexLazyRoute: IdIndexLazyRoute,
   ItIndexLazyRoute: ItIndexLazyRoute,
   JaIndexLazyRoute: JaIndexLazyRoute,
   PtIndexLazyRoute: PtIndexLazyRoute,
+  SettingsIndexLazyRoute: SettingsIndexLazyRoute,
   SwIndexLazyRoute: SwIndexLazyRoute,
   TrIndexLazyRoute: TrIndexLazyRoute,
   UnitIndexLazyRoute: UnitIndexLazyRoute,
@@ -797,11 +733,9 @@ export const routeTree = rootRoute
         "/",
         "/notFoundComponent",
         "/users/$username",
-        "/ar/alphabet",
         "/en/alphabet",
         "/en/phrases",
         "/es/alphabet",
-        "/fa/alphabet",
         "/fr/alphabet",
         "/hi/alphabet",
         "/id/alphabet",
@@ -811,16 +745,15 @@ export const routeTree = rootRoute
         "/sw/alphabet",
         "/tr/alphabet",
         "/zh/alphabet",
-        "/ar/",
         "/en/",
         "/es/",
-        "/fa/",
         "/fr/",
         "/hi/",
         "/id/",
         "/it/",
         "/ja/",
         "/pt/",
+        "/settings/",
         "/sw/",
         "/tr/",
         "/unit/",
@@ -838,9 +771,6 @@ export const routeTree = rootRoute
     "/users/$username": {
       "filePath": "users/$username.tsx"
     },
-    "/ar/alphabet": {
-      "filePath": "ar/alphabet.lazy.tsx"
-    },
     "/en/alphabet": {
       "filePath": "en/alphabet.lazy.tsx"
     },
@@ -849,9 +779,6 @@ export const routeTree = rootRoute
     },
     "/es/alphabet": {
       "filePath": "es/alphabet.lazy.tsx"
-    },
-    "/fa/alphabet": {
-      "filePath": "fa/alphabet.lazy.tsx"
     },
     "/fr/alphabet": {
       "filePath": "fr/alphabet.lazy.tsx"
@@ -880,17 +807,11 @@ export const routeTree = rootRoute
     "/zh/alphabet": {
       "filePath": "zh/alphabet.lazy.tsx"
     },
-    "/ar/": {
-      "filePath": "ar/index.lazy.tsx"
-    },
     "/en/": {
       "filePath": "en/index.lazy.tsx"
     },
     "/es/": {
       "filePath": "es/index.lazy.tsx"
-    },
-    "/fa/": {
-      "filePath": "fa/index.lazy.tsx"
     },
     "/fr/": {
       "filePath": "fr/index.lazy.tsx"
@@ -909,6 +830,9 @@ export const routeTree = rootRoute
     },
     "/pt/": {
       "filePath": "pt/index.lazy.tsx"
+    },
+    "/settings/": {
+      "filePath": "settings/index.lazy.tsx"
     },
     "/sw/": {
       "filePath": "sw/index.lazy.tsx"

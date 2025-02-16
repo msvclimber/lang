@@ -2,8 +2,6 @@ import { createLazyFileRoute } from "@tanstack/react-router";
 
 import Grid from "@/shared/ui/Grid";
 
-import AppTitle from "@/features/AppTitle";
-
 import styles from "./styles.module.scss";
 
 import en from "@/mock/units_en";
@@ -29,7 +27,6 @@ export const Route = createLazyFileRoute("/unit/")({
 function Index() {
   return (
     <div>
-      <AppTitle title="Welcome Words Home!" />
       <Grid className={styles.grid} data={units} />
     </div>
   );

@@ -1,15 +1,14 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-import AppTitle from '@/features/AppTitle'
+import UnderConstruction from "@/features/UnderConstruction";
 
-export const Route = createLazyFileRoute('/hi/alphabet')({
+export const Route = createLazyFileRoute("/hi/alphabet")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return (
-    <div>
-      <AppTitle title="Алфавит Хинди" />
-    </div>
-  )
+  return <div>
+    <h2>Алфавит</h2>
+    <UnderConstruction />
+  </div>;
 }

@@ -2,11 +2,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import { resolve } from "path";
+import svgr from "vite-plugin-svgr";
 
 // https://vite.dev/config/
 export default defineConfig({
   base: "/",
-  plugins: [TanStackRouterVite(), react()],
+  plugins: [
+    TanStackRouterVite(),
+    react(),
+    svgr(),
+  ],
   // server: {
   //   host: true,
   //   port: 8000, // This is the port which we will use in docker

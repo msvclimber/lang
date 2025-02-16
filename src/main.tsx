@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 
-import NotFoundComponent from './shared/NotFoundComponent';
+import NotFoundComponent from './features/NotFoundComponent';
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
