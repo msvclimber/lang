@@ -1,0 +1,19 @@
+@use "@/shared/ui/styles/colors.module.scss";
+
+.blockTitleRoot {
+  position: relative;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid colors.$grey40;
+}
+
+.blockTitleTitle {
+  position: absolute;
+  top: -10px;
+  left: 28px;
+  border-radius: 4px;
+  border-color: colors.$grey20;
+  box-shadow: 0px 0px 8px 1px colors.$grey30;
+  background-color: white;
+  padding: 2px 8px;
+}
