@@ -45,7 +45,18 @@ const FrAlphabetLazyImport = createFileRoute('/fr/alphabet')()
 const EsAlphabetLazyImport = createFileRoute('/es/alphabet')()
 const EnPhrasesLazyImport = createFileRoute('/en/phrases')()
 const EnAlphabetLazyImport = createFileRoute('/en/alphabet')()
+const ZhIdiomsIndexLazyImport = createFileRoute('/zh/idioms/')()
+const TrIdiomsIndexLazyImport = createFileRoute('/tr/idioms/')()
+const SwIdiomsIndexLazyImport = createFileRoute('/sw/idioms/')()
+const PtIdiomsIndexLazyImport = createFileRoute('/pt/idioms/')()
+const JaIdiomsIndexLazyImport = createFileRoute('/ja/idioms/')()
+const ItIdiomsIndexLazyImport = createFileRoute('/it/idioms/')()
+const IdIdiomsIndexLazyImport = createFileRoute('/id/idioms/')()
+const HiIdiomsIndexLazyImport = createFileRoute('/hi/idioms/')()
+const FrIdiomsIndexLazyImport = createFileRoute('/fr/idioms/')()
+const EsIdiomsIndexLazyImport = createFileRoute('/es/idioms/')()
 const EnPronounsIndexLazyImport = createFileRoute('/en/pronouns/')()
+const EnIdiomsIndexLazyImport = createFileRoute('/en/idioms/')()
 
 // Create/Update Routes
 
@@ -227,12 +238,100 @@ const UsersUsernameRoute = UsersUsernameImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ZhIdiomsIndexLazyRoute = ZhIdiomsIndexLazyImport.update({
+  id: '/zh/idioms/',
+  path: '/zh/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/zh/idioms/index.lazy').then((d) => d.Route),
+)
+
+const TrIdiomsIndexLazyRoute = TrIdiomsIndexLazyImport.update({
+  id: '/tr/idioms/',
+  path: '/tr/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/tr/idioms/index.lazy').then((d) => d.Route),
+)
+
+const SwIdiomsIndexLazyRoute = SwIdiomsIndexLazyImport.update({
+  id: '/sw/idioms/',
+  path: '/sw/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/sw/idioms/index.lazy').then((d) => d.Route),
+)
+
+const PtIdiomsIndexLazyRoute = PtIdiomsIndexLazyImport.update({
+  id: '/pt/idioms/',
+  path: '/pt/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/pt/idioms/index.lazy').then((d) => d.Route),
+)
+
+const JaIdiomsIndexLazyRoute = JaIdiomsIndexLazyImport.update({
+  id: '/ja/idioms/',
+  path: '/ja/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/ja/idioms/index.lazy').then((d) => d.Route),
+)
+
+const ItIdiomsIndexLazyRoute = ItIdiomsIndexLazyImport.update({
+  id: '/it/idioms/',
+  path: '/it/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/it/idioms/index.lazy').then((d) => d.Route),
+)
+
+const IdIdiomsIndexLazyRoute = IdIdiomsIndexLazyImport.update({
+  id: '/id/idioms/',
+  path: '/id/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/id/idioms/index.lazy').then((d) => d.Route),
+)
+
+const HiIdiomsIndexLazyRoute = HiIdiomsIndexLazyImport.update({
+  id: '/hi/idioms/',
+  path: '/hi/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/hi/idioms/index.lazy').then((d) => d.Route),
+)
+
+const FrIdiomsIndexLazyRoute = FrIdiomsIndexLazyImport.update({
+  id: '/fr/idioms/',
+  path: '/fr/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/fr/idioms/index.lazy').then((d) => d.Route),
+)
+
+const EsIdiomsIndexLazyRoute = EsIdiomsIndexLazyImport.update({
+  id: '/es/idioms/',
+  path: '/es/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/es/idioms/index.lazy').then((d) => d.Route),
+)
+
 const EnPronounsIndexLazyRoute = EnPronounsIndexLazyImport.update({
   id: '/en/pronouns/',
   path: '/en/pronouns/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
   import('./routes/en/pronouns/index.lazy').then((d) => d.Route),
+)
+
+const EnIdiomsIndexLazyRoute = EnIdiomsIndexLazyImport.update({
+  id: '/en/idioms/',
+  path: '/en/idioms/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/en/idioms/index.lazy').then((d) => d.Route),
 )
 
 // Populate the FileRoutesByPath interface
@@ -442,11 +541,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZhIndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/en/idioms/': {
+      id: '/en/idioms/'
+      path: '/en/idioms'
+      fullPath: '/en/idioms'
+      preLoaderRoute: typeof EnIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/en/pronouns/': {
       id: '/en/pronouns/'
       path: '/en/pronouns'
       fullPath: '/en/pronouns'
       preLoaderRoute: typeof EnPronounsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/es/idioms/': {
+      id: '/es/idioms/'
+      path: '/es/idioms'
+      fullPath: '/es/idioms'
+      preLoaderRoute: typeof EsIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/fr/idioms/': {
+      id: '/fr/idioms/'
+      path: '/fr/idioms'
+      fullPath: '/fr/idioms'
+      preLoaderRoute: typeof FrIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/hi/idioms/': {
+      id: '/hi/idioms/'
+      path: '/hi/idioms'
+      fullPath: '/hi/idioms'
+      preLoaderRoute: typeof HiIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/id/idioms/': {
+      id: '/id/idioms/'
+      path: '/id/idioms'
+      fullPath: '/id/idioms'
+      preLoaderRoute: typeof IdIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/it/idioms/': {
+      id: '/it/idioms/'
+      path: '/it/idioms'
+      fullPath: '/it/idioms'
+      preLoaderRoute: typeof ItIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/ja/idioms/': {
+      id: '/ja/idioms/'
+      path: '/ja/idioms'
+      fullPath: '/ja/idioms'
+      preLoaderRoute: typeof JaIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/pt/idioms/': {
+      id: '/pt/idioms/'
+      path: '/pt/idioms'
+      fullPath: '/pt/idioms'
+      preLoaderRoute: typeof PtIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/sw/idioms/': {
+      id: '/sw/idioms/'
+      path: '/sw/idioms'
+      fullPath: '/sw/idioms'
+      preLoaderRoute: typeof SwIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/tr/idioms/': {
+      id: '/tr/idioms/'
+      path: '/tr/idioms'
+      fullPath: '/tr/idioms'
+      preLoaderRoute: typeof TrIdiomsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/zh/idioms/': {
+      id: '/zh/idioms/'
+      path: '/zh/idioms'
+      fullPath: '/zh/idioms'
+      preLoaderRoute: typeof ZhIdiomsIndexLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -484,7 +660,18 @@ export interface FileRoutesByFullPath {
   '/unit': typeof UnitIndexLazyRoute
   '/users': typeof UsersIndexLazyRoute
   '/zh': typeof ZhIndexLazyRoute
+  '/en/idioms': typeof EnIdiomsIndexLazyRoute
   '/en/pronouns': typeof EnPronounsIndexLazyRoute
+  '/es/idioms': typeof EsIdiomsIndexLazyRoute
+  '/fr/idioms': typeof FrIdiomsIndexLazyRoute
+  '/hi/idioms': typeof HiIdiomsIndexLazyRoute
+  '/id/idioms': typeof IdIdiomsIndexLazyRoute
+  '/it/idioms': typeof ItIdiomsIndexLazyRoute
+  '/ja/idioms': typeof JaIdiomsIndexLazyRoute
+  '/pt/idioms': typeof PtIdiomsIndexLazyRoute
+  '/sw/idioms': typeof SwIdiomsIndexLazyRoute
+  '/tr/idioms': typeof TrIdiomsIndexLazyRoute
+  '/zh/idioms': typeof ZhIdiomsIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
@@ -517,7 +704,18 @@ export interface FileRoutesByTo {
   '/unit': typeof UnitIndexLazyRoute
   '/users': typeof UsersIndexLazyRoute
   '/zh': typeof ZhIndexLazyRoute
+  '/en/idioms': typeof EnIdiomsIndexLazyRoute
   '/en/pronouns': typeof EnPronounsIndexLazyRoute
+  '/es/idioms': typeof EsIdiomsIndexLazyRoute
+  '/fr/idioms': typeof FrIdiomsIndexLazyRoute
+  '/hi/idioms': typeof HiIdiomsIndexLazyRoute
+  '/id/idioms': typeof IdIdiomsIndexLazyRoute
+  '/it/idioms': typeof ItIdiomsIndexLazyRoute
+  '/ja/idioms': typeof JaIdiomsIndexLazyRoute
+  '/pt/idioms': typeof PtIdiomsIndexLazyRoute
+  '/sw/idioms': typeof SwIdiomsIndexLazyRoute
+  '/tr/idioms': typeof TrIdiomsIndexLazyRoute
+  '/zh/idioms': typeof ZhIdiomsIndexLazyRoute
 }
 
 export interface FileRoutesById {
@@ -551,7 +749,18 @@ export interface FileRoutesById {
   '/unit/': typeof UnitIndexLazyRoute
   '/users/': typeof UsersIndexLazyRoute
   '/zh/': typeof ZhIndexLazyRoute
+  '/en/idioms/': typeof EnIdiomsIndexLazyRoute
   '/en/pronouns/': typeof EnPronounsIndexLazyRoute
+  '/es/idioms/': typeof EsIdiomsIndexLazyRoute
+  '/fr/idioms/': typeof FrIdiomsIndexLazyRoute
+  '/hi/idioms/': typeof HiIdiomsIndexLazyRoute
+  '/id/idioms/': typeof IdIdiomsIndexLazyRoute
+  '/it/idioms/': typeof ItIdiomsIndexLazyRoute
+  '/ja/idioms/': typeof JaIdiomsIndexLazyRoute
+  '/pt/idioms/': typeof PtIdiomsIndexLazyRoute
+  '/sw/idioms/': typeof SwIdiomsIndexLazyRoute
+  '/tr/idioms/': typeof TrIdiomsIndexLazyRoute
+  '/zh/idioms/': typeof ZhIdiomsIndexLazyRoute
 }
 
 export interface FileRouteTypes {
@@ -586,7 +795,18 @@ export interface FileRouteTypes {
     | '/unit'
     | '/users'
     | '/zh'
+    | '/en/idioms'
     | '/en/pronouns'
+    | '/es/idioms'
+    | '/fr/idioms'
+    | '/hi/idioms'
+    | '/id/idioms'
+    | '/it/idioms'
+    | '/ja/idioms'
+    | '/pt/idioms'
+    | '/sw/idioms'
+    | '/tr/idioms'
+    | '/zh/idioms'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -618,7 +838,18 @@ export interface FileRouteTypes {
     | '/unit'
     | '/users'
     | '/zh'
+    | '/en/idioms'
     | '/en/pronouns'
+    | '/es/idioms'
+    | '/fr/idioms'
+    | '/hi/idioms'
+    | '/id/idioms'
+    | '/it/idioms'
+    | '/ja/idioms'
+    | '/pt/idioms'
+    | '/sw/idioms'
+    | '/tr/idioms'
+    | '/zh/idioms'
   id:
     | '__root__'
     | '/'
@@ -650,7 +881,18 @@ export interface FileRouteTypes {
     | '/unit/'
     | '/users/'
     | '/zh/'
+    | '/en/idioms/'
     | '/en/pronouns/'
+    | '/es/idioms/'
+    | '/fr/idioms/'
+    | '/hi/idioms/'
+    | '/id/idioms/'
+    | '/it/idioms/'
+    | '/ja/idioms/'
+    | '/pt/idioms/'
+    | '/sw/idioms/'
+    | '/tr/idioms/'
+    | '/zh/idioms/'
   fileRoutesById: FileRoutesById
 }
 
@@ -684,7 +926,18 @@ export interface RootRouteChildren {
   UnitIndexLazyRoute: typeof UnitIndexLazyRoute
   UsersIndexLazyRoute: typeof UsersIndexLazyRoute
   ZhIndexLazyRoute: typeof ZhIndexLazyRoute
+  EnIdiomsIndexLazyRoute: typeof EnIdiomsIndexLazyRoute
   EnPronounsIndexLazyRoute: typeof EnPronounsIndexLazyRoute
+  EsIdiomsIndexLazyRoute: typeof EsIdiomsIndexLazyRoute
+  FrIdiomsIndexLazyRoute: typeof FrIdiomsIndexLazyRoute
+  HiIdiomsIndexLazyRoute: typeof HiIdiomsIndexLazyRoute
+  IdIdiomsIndexLazyRoute: typeof IdIdiomsIndexLazyRoute
+  ItIdiomsIndexLazyRoute: typeof ItIdiomsIndexLazyRoute
+  JaIdiomsIndexLazyRoute: typeof JaIdiomsIndexLazyRoute
+  PtIdiomsIndexLazyRoute: typeof PtIdiomsIndexLazyRoute
+  SwIdiomsIndexLazyRoute: typeof SwIdiomsIndexLazyRoute
+  TrIdiomsIndexLazyRoute: typeof TrIdiomsIndexLazyRoute
+  ZhIdiomsIndexLazyRoute: typeof ZhIdiomsIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -717,7 +970,18 @@ const rootRouteChildren: RootRouteChildren = {
   UnitIndexLazyRoute: UnitIndexLazyRoute,
   UsersIndexLazyRoute: UsersIndexLazyRoute,
   ZhIndexLazyRoute: ZhIndexLazyRoute,
+  EnIdiomsIndexLazyRoute: EnIdiomsIndexLazyRoute,
   EnPronounsIndexLazyRoute: EnPronounsIndexLazyRoute,
+  EsIdiomsIndexLazyRoute: EsIdiomsIndexLazyRoute,
+  FrIdiomsIndexLazyRoute: FrIdiomsIndexLazyRoute,
+  HiIdiomsIndexLazyRoute: HiIdiomsIndexLazyRoute,
+  IdIdiomsIndexLazyRoute: IdIdiomsIndexLazyRoute,
+  ItIdiomsIndexLazyRoute: ItIdiomsIndexLazyRoute,
+  JaIdiomsIndexLazyRoute: JaIdiomsIndexLazyRoute,
+  PtIdiomsIndexLazyRoute: PtIdiomsIndexLazyRoute,
+  SwIdiomsIndexLazyRoute: SwIdiomsIndexLazyRoute,
+  TrIdiomsIndexLazyRoute: TrIdiomsIndexLazyRoute,
+  ZhIdiomsIndexLazyRoute: ZhIdiomsIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -759,7 +1023,18 @@ export const routeTree = rootRoute
         "/unit/",
         "/users/",
         "/zh/",
-        "/en/pronouns/"
+        "/en/idioms/",
+        "/en/pronouns/",
+        "/es/idioms/",
+        "/fr/idioms/",
+        "/hi/idioms/",
+        "/id/idioms/",
+        "/it/idioms/",
+        "/ja/idioms/",
+        "/pt/idioms/",
+        "/sw/idioms/",
+        "/tr/idioms/",
+        "/zh/idioms/"
       ]
     },
     "/": {
@@ -849,8 +1124,41 @@ export const routeTree = rootRoute
     "/zh/": {
       "filePath": "zh/index.lazy.tsx"
     },
+    "/en/idioms/": {
+      "filePath": "en/idioms/index.lazy.tsx"
+    },
     "/en/pronouns/": {
       "filePath": "en/pronouns/index.lazy.tsx"
+    },
+    "/es/idioms/": {
+      "filePath": "es/idioms/index.lazy.tsx"
+    },
+    "/fr/idioms/": {
+      "filePath": "fr/idioms/index.lazy.tsx"
+    },
+    "/hi/idioms/": {
+      "filePath": "hi/idioms/index.lazy.tsx"
+    },
+    "/id/idioms/": {
+      "filePath": "id/idioms/index.lazy.tsx"
+    },
+    "/it/idioms/": {
+      "filePath": "it/idioms/index.lazy.tsx"
+    },
+    "/ja/idioms/": {
+      "filePath": "ja/idioms/index.lazy.tsx"
+    },
+    "/pt/idioms/": {
+      "filePath": "pt/idioms/index.lazy.tsx"
+    },
+    "/sw/idioms/": {
+      "filePath": "sw/idioms/index.lazy.tsx"
+    },
+    "/tr/idioms/": {
+      "filePath": "tr/idioms/index.lazy.tsx"
+    },
+    "/zh/idioms/": {
+      "filePath": "zh/idioms/index.lazy.tsx"
     }
   }
 }

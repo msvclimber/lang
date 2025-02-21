@@ -16,6 +16,7 @@ function Index() {
         <BlockLink to="/en/phrases" title="Фразы" />
         <BlockLink to="/en/alphabet" title="Алфавит" />
         <BlockLink to="/en/pronouns" title="Местоимения" />
+        <BlockLink to="/en/idioms" title="Идиомы" />
       </div>
       <BlockTitle title="Ссылки" rootClassName={styles.linksBlock}>
         <ul>

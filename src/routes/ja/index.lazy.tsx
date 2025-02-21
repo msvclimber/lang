@@ -27,6 +27,11 @@ function Index() {
               Сайт по тестированию японского языка en версия
             </a>
           </li>
+          <li>
+            <a href="https://konnichiwa.ru/" target="_blanck">
+              Konnichiwa club - все о Японии
+            </a>
+          </li>
         </ul>
       </BlockTitle>
     </div>
