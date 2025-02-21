@@ -15,6 +15,7 @@ function RouteComponent() {
         <li>Are you serious? - Are you for real?</li>
         <li>I'm tired - I'm beat</li>
         <li>I'm sorry - My bad</li>
+        <li>What do you go by? как я могу к тебе обращаться?</li>
       </ul>
     </div>
   )
