@@ -15,6 +15,7 @@ function Index() {
         <ul>
           <li>Jump for joy - прыгать от радости</li>
           <li>A piece of cake - проще простого</li>
+          <li>R.I.P. - Rest in peace - покойся с миром</li>
         </ul>
       </BlockTitle>
     </div>

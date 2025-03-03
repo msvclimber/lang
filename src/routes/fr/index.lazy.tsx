@@ -13,6 +13,7 @@ function Index() {
     <div>
       <div className={styles.blockList}>
         <BlockLink to="/fr/alphabet" title="Алфавит" />
+        <BlockLink to="/fr/phrases" title="Фразы" />
       </div>
     </div>
   );

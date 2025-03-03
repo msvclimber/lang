@@ -15,6 +15,16 @@ function Index() {
       <div className={styles.blockList}>
         <BlockLink to="/ja/alphabet" title="Алфавит" />
       </div>
+      <BlockTitle title="Info" rootClassName={styles.linksBlock}>
+        <ul>
+          <li>
+            Дзёё-кандзи (яп. 常用漢字, «обычно используемые кандзи») — 2136 =
+            1006 кёику кандзи + 1130
+          </li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+      </BlockTitle>
       <BlockTitle title="Ссылки" rootClassName={styles.linksBlock}>
         <ul>
           <li>

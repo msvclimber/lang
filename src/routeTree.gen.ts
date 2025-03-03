@@ -41,6 +41,7 @@ const JaAlphabetLazyImport = createFileRoute('/ja/alphabet')()
 const ItAlphabetLazyImport = createFileRoute('/it/alphabet')()
 const IdAlphabetLazyImport = createFileRoute('/id/alphabet')()
 const HiAlphabetLazyImport = createFileRoute('/hi/alphabet')()
+const FrPhrasesLazyImport = createFileRoute('/fr/phrases')()
 const FrAlphabetLazyImport = createFileRoute('/fr/alphabet')()
 const EsAlphabetLazyImport = createFileRoute('/es/alphabet')()
 const EnPhrasesLazyImport = createFileRoute('/en/phrases')()
@@ -207,6 +208,12 @@ const HiAlphabetLazyRoute = HiAlphabetLazyImport.update({
   path: '/hi/alphabet',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/hi/alphabet.lazy').then((d) => d.Route))
+
+const FrPhrasesLazyRoute = FrPhrasesLazyImport.update({
+  id: '/fr/phrases',
+  path: '/fr/phrases',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/fr/phrases.lazy').then((d) => d.Route))
 
 const FrAlphabetLazyRoute = FrAlphabetLazyImport.update({
   id: '/fr/alphabet',
@@ -385,6 +392,13 @@ declare module '@tanstack/react-router' {
       path: '/fr/alphabet'
       fullPath: '/fr/alphabet'
       preLoaderRoute: typeof FrAlphabetLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/fr/phrases': {
+      id: '/fr/phrases'
+      path: '/fr/phrases'
+      fullPath: '/fr/phrases'
+      preLoaderRoute: typeof FrPhrasesLazyImport
       parentRoute: typeof rootRoute
     }
     '/hi/alphabet': {
@@ -638,6 +652,7 @@ export interface FileRoutesByFullPath {
   '/en/phrases': typeof EnPhrasesLazyRoute
   '/es/alphabet': typeof EsAlphabetLazyRoute
   '/fr/alphabet': typeof FrAlphabetLazyRoute
+  '/fr/phrases': typeof FrPhrasesLazyRoute
   '/hi/alphabet': typeof HiAlphabetLazyRoute
   '/id/alphabet': typeof IdAlphabetLazyRoute
   '/it/alphabet': typeof ItAlphabetLazyRoute
@@ -682,6 +697,7 @@ export interface FileRoutesByTo {
   '/en/phrases': typeof EnPhrasesLazyRoute
   '/es/alphabet': typeof EsAlphabetLazyRoute
   '/fr/alphabet': typeof FrAlphabetLazyRoute
+  '/fr/phrases': typeof FrPhrasesLazyRoute
   '/hi/alphabet': typeof HiAlphabetLazyRoute
   '/id/alphabet': typeof IdAlphabetLazyRoute
   '/it/alphabet': typeof ItAlphabetLazyRoute
@@ -727,6 +743,7 @@ export interface FileRoutesById {
   '/en/phrases': typeof EnPhrasesLazyRoute
   '/es/alphabet': typeof EsAlphabetLazyRoute
   '/fr/alphabet': typeof FrAlphabetLazyRoute
+  '/fr/phrases': typeof FrPhrasesLazyRoute
   '/hi/alphabet': typeof HiAlphabetLazyRoute
   '/id/alphabet': typeof IdAlphabetLazyRoute
   '/it/alphabet': typeof ItAlphabetLazyRoute
@@ -773,6 +790,7 @@ export interface FileRouteTypes {
     | '/en/phrases'
     | '/es/alphabet'
     | '/fr/alphabet'
+    | '/fr/phrases'
     | '/hi/alphabet'
     | '/id/alphabet'
     | '/it/alphabet'
@@ -816,6 +834,7 @@ export interface FileRouteTypes {
     | '/en/phrases'
     | '/es/alphabet'
     | '/fr/alphabet'
+    | '/fr/phrases'
     | '/hi/alphabet'
     | '/id/alphabet'
     | '/it/alphabet'
@@ -859,6 +878,7 @@ export interface FileRouteTypes {
     | '/en/phrases'
     | '/es/alphabet'
     | '/fr/alphabet'
+    | '/fr/phrases'
     | '/hi/alphabet'
     | '/id/alphabet'
     | '/it/alphabet'
@@ -904,6 +924,7 @@ export interface RootRouteChildren {
   EnPhrasesLazyRoute: typeof EnPhrasesLazyRoute
   EsAlphabetLazyRoute: typeof EsAlphabetLazyRoute
   FrAlphabetLazyRoute: typeof FrAlphabetLazyRoute
+  FrPhrasesLazyRoute: typeof FrPhrasesLazyRoute
   HiAlphabetLazyRoute: typeof HiAlphabetLazyRoute
   IdAlphabetLazyRoute: typeof IdAlphabetLazyRoute
   ItAlphabetLazyRoute: typeof ItAlphabetLazyRoute
@@ -948,6 +969,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnPhrasesLazyRoute: EnPhrasesLazyRoute,
   EsAlphabetLazyRoute: EsAlphabetLazyRoute,
   FrAlphabetLazyRoute: FrAlphabetLazyRoute,
+  FrPhrasesLazyRoute: FrPhrasesLazyRoute,
   HiAlphabetLazyRoute: HiAlphabetLazyRoute,
   IdAlphabetLazyRoute: IdAlphabetLazyRoute,
   ItAlphabetLazyRoute: ItAlphabetLazyRoute,
@@ -1001,6 +1023,7 @@ export const routeTree = rootRoute
         "/en/phrases",
         "/es/alphabet",
         "/fr/alphabet",
+        "/fr/phrases",
         "/hi/alphabet",
         "/id/alphabet",
         "/it/alphabet",
@@ -1057,6 +1080,9 @@ export const routeTree = rootRoute
     },
     "/fr/alphabet": {
       "filePath": "fr/alphabet.lazy.tsx"
+    },
+    "/fr/phrases": {
+      "filePath": "fr/phrases.lazy.tsx"
     },
     "/hi/alphabet": {
       "filePath": "hi/alphabet.lazy.tsx"
